@@ -14,7 +14,8 @@ public class CategoriaService {
     private CategoriaRepository categoriaRepository;
 
     public Categoria buscar(Integer id) {
-        Optional<Categoria> categoria = categoriaRepository.findById(id);
-        return categoria.orElse(null);
+        Optional<Categoria> obj = categoriaRepository.findById(id);
+        return obj.orElseThrow(() -> new com.cesarbassani.cursomc.services.exception.ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
     }
 }
