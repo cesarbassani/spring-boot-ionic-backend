@@ -10,7 +10,7 @@ import java.text.ParseException;
 
 @Configuration
 @Profile("test")
-public class TesteConfig {
+public class TestConfig {
 
     @Autowired
     private DBService dbService;
@@ -18,7 +18,6 @@ public class TesteConfig {
     @Bean
     public boolean instantiateDatabase() throws ParseException {
         dbService.instantiateTestDatabase();
-
         return true;
     }
 }
