@@ -13,9 +13,13 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public Pedido find(Integer id) {
         Optional<Pedido> obj = pedidoRepository.findById(id);
         return obj.orElseThrow(() -> new com.cesarbassani.cursomc.services.exception.ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
+//        emailService.sendOrderConfirmationEmail(obj);
     }
 }
